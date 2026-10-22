@@ -1,0 +1,25 @@
+// Paleta de colores del juego (alto contraste)
+
+$color-primary-green: #0d652d; // Verde principal
+$color-primary-green-light: #188038;
+$color-primary-green-dark: #09461f;
+
+$color-primary-red: #c5221f; // Rojo principal
+$color-primary-red-light: #d93025;
+$color-primary-red-dark: #8c1d18;
+
+// Tonos neutros y superficie
+$color-background: #0f172a;
+$color-surface: #1e293b;
+$color-surface-hover: #334155;
+$color-text-primary: #f8fafc;
+$color-text-secondary: #94a3b8;
+$color-text-muted: #64748b;
+$color-border: #334155;
+$color-border-focus: #38bdf8;
+
+// Estados y feedback
+$color-error: #f87171;
+$color-error-bg: rgba(239, 68, 68, 0.12);
+$color-error-border: #ef4444;
+$color-focus-ring: #38bdf8;

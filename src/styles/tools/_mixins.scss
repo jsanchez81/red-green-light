@@ -1,0 +1,50 @@
+@use '../settings/colors' as colors;
+@use '../settings/variables' as vars;
+
+// Indicador de foco accesible para teclado
+@mixin focus-ring($color: colors.$color-focus-ring, $offset: 3px) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: $offset;
+    box-shadow: 0 0 0 4px rgba($color, 0.35);
+  }
+
+  // Elimina el contorno en clics con ratón
+  &:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+// Oculta visualmente un elemento manteniéndolo accesible para lectores de pantalla
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Aplica estilos solo si el usuario no tiene reducción de movimiento activada
+@mixin motion-safe {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+// Tamaño mínimo de objetivo táctil
+@mixin touch-target($size: 44px) {
+  min-width: $size;
+  min-height: $size;
+}
+
+// Centrado flexible
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,14 @@
+{
+  "skip": {
+    "tag": true
+  },
+  "types": [
+    { "type": "feat", "section": "Features" },
+    { "type": "fix", "section": "Bug Fixes" },
+    { "type": "perf", "section": "Performance Improvements" },
+    { "type": "refactor", "section": "Refactorings" },
+    { "type": "docs", "section": "Documentation", "hidden": false },
+    { "type": "chore", "section": "Maintenance", "hidden": false },
+    { "type": "test", "section": "Tests", "hidden": false }
+  ]
+}

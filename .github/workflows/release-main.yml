@@ -1,0 +1,67 @@
+name: Post-Release on Main
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  tag-and-backmerge:
+    name: Create Tag & Back-merge to Develop
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout repository con historial completo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 2. Configurar identidad Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: 3. Obtener versión desde package.json
+        id: get_version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Versión detectada: $VERSION"
+
+      - name: 4. Crear y subir el Git Tag oficial
+        run: |
+          TAG="v${{ steps.get_version.outputs.version }}"
+          if git rev-parse "$TAG" >/dev/null 2>&1; then
+            echo "El tag $TAG ya existe en el repositorio. Omitiendo."
+          else
+            echo "Creando tag $TAG en main..."
+            git tag -a "$TAG" -m "Release $TAG"
+            git push origin "$TAG"
+          fi
+
+      - name: 5. Back-merge automático de main a develop
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Sincronizando main de vuelta hacia develop..."
+          git checkout develop
+          git pull origin develop
+          git merge origin/main -m "chore(release): back-merge main (v${{ steps.get_version.outputs.version }}) into develop [skip ci]"
+          
+          echo "Intentando push directo a develop..."
+          if git push origin develop; then
+            echo "Back-merge completado exitosamente vía push directo."
+          else
+            echo "Push directo falló (posiblemente por reglas de protección de rama en develop)."
+            echo "Creando Pull Request automática hacia develop..."
+            gh pr create \
+              --base develop \
+              --head main \
+              --title "chore(release): back-merge main (v${{ steps.get_version.outputs.version }}) into develop" \
+              --body "Back-merge automático de main a develop tras release v${{ steps.get_version.outputs.version }}."
+          fi

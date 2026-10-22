@@ -1,0 +1,51 @@
+// Estilos globales y variables del proyecto
+
+// 1. Configuración y variables
+@use 'styles/settings/colors' as colors;
+@use 'styles/settings/variables' as vars;
+
+// 2. Mixins y utilidades
+@use 'styles/tools/mixins' as tools;
+
+// 3. Reset y base
+@use 'styles/generic/reset';
+
+// 4. Objetos de maquetación
+@use 'styles/objects/layout';
+
+// Variables CSS en :root
+:root {
+  --color-primary-green: #{colors.$color-primary-green};
+  --color-primary-green-light: #{colors.$color-primary-green-light};
+  --color-primary-green-dark: #{colors.$color-primary-green-dark};
+
+  --color-primary-red: #{colors.$color-primary-red};
+  --color-primary-red-light: #{colors.$color-primary-red-light};
+  --color-primary-red-dark: #{colors.$color-primary-red-dark};
+
+  --color-bg: #{colors.$color-background};
+  --color-surface: #{colors.$color-surface};
+  --color-surface-hover: #{colors.$color-surface-hover};
+  --color-text-primary: #{colors.$color-text-primary};
+  --color-text-secondary: #{colors.$color-text-secondary};
+  --color-border: #{colors.$color-border};
+  --color-focus-ring: #{colors.$color-focus-ring};
+
+  --color-error: #{colors.$color-error};
+  --color-error-bg: #{colors.$color-error-bg};
+  --color-error-border: #{colors.$color-error-border};
+
+  --space-sm: #{vars.$space-sm};
+  --space-md: #{vars.$space-md};
+  --space-lg: #{vars.$space-lg};
+  --space-xl: #{vars.$space-xl};
+
+  --radius-sm: #{vars.$radius-sm};
+  --radius-md: #{vars.$radius-md};
+  --radius-lg: #{vars.$radius-lg};
+  --radius-full: #{vars.$radius-full};
+
+  --font-size-base: #{vars.$font-size-base};
+  --font-size-lg: #{vars.$font-size-lg};
+  --font-size-xl: #{vars.$font-size-xl};
+}

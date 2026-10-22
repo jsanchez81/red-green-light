@@ -1,0 +1,41 @@
+@use 'styles/settings/colors' as colors;
+@use 'styles/settings/variables' as vars;
+@use 'styles/tools/mixins' as tools;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.c-home-card {
+  width: 100%;
+  padding: vars.$space-xl vars.$space-lg;
+  background-color: var(--color-surface, #{colors.$color-surface});
+  border: 1px solid var(--color-border, #{colors.$color-border});
+  border-radius: vars.$radius-lg;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+
+  &__header {
+    width: 100%;
+  }
+
+  &__title {
+    font-size: vars.$font-size-2xl;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary, #{colors.$color-text-primary});
+    line-height: 1.2;
+  }
+
+  &__icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: vars.$space-sm 0;
+  }
+
+  &__form-wrapper {
+    width: 100%;
+    margin-top: vars.$space-xs;
+  }
+}

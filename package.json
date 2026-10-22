@@ -1,0 +1,50 @@
+{
+  "name": "red-green-app",
+  "version": "1.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "jest --runInBand",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --runInBand --coverage",
+    "lint": "eslint src",
+    "release": "standard-version",
+    "release:dry": "standard-version --dry-run"
+  },
+  "private": true,
+  "packageManager": "npm@11.6.1",
+  "dependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/compiler": "^21.2.0",
+    "@angular/core": "^21.2.0",
+    "@angular/forms": "^21.2.0",
+    "@angular/platform-browser": "^21.2.0",
+    "@angular/router": "^21.2.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular-eslint/builder": "^22.6.0",
+    "@angular-eslint/eslint-plugin": "^22.6.0",
+    "@angular-eslint/eslint-plugin-template": "^22.6.0",
+    "@angular-eslint/schematics": "^22.6.0",
+    "@angular-eslint/template-parser": "^22.6.0",
+    "@angular/build": "^21.2.27",
+    "@angular/cli": "^21.2.27",
+    "@angular/compiler-cli": "^21.2.0",
+    "@emnapi/core": "^1.11.3",
+    "@emnapi/runtime": "^1.11.3",
+    "@types/jest": "^30.0.0",
+    "angular-eslint": "^22.6.0",
+    "eslint": "^10.13.0",
+    "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2",
+    "jest-preset-angular": "^17.0.3",
+    "prettier": "^3.8.1",
+    "standard-version": "^9.5.0",
+    "typescript": "~5.9.2",
+    "typescript-eslint": "^8.72.0"
+  }
+}

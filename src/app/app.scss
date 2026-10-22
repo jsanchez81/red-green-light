@@ -1,0 +1,25 @@
+@use 'styles/settings/colors' as colors;
+@use 'styles/settings/variables' as vars;
+@use 'styles/tools/mixins' as tools;
+
+// Enlace de salto: visible solo al recibir foco por teclado
+.c-skip-link {
+  position: absolute;
+  top: -100px;
+  left: vars.$space-md;
+  z-index: 1000;
+  padding: vars.$space-sm vars.$space-md;
+  background-color: var(--color-surface, #{colors.$color-surface});
+  color: var(--color-text-primary, #{colors.$color-text-primary});
+  border: 2px solid var(--color-focus-ring, #{colors.$color-focus-ring});
+  border-radius: vars.$radius-md;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top vars.$transition-fast;
+
+  &:focus {
+    top: vars.$space-md;
+    outline: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+}

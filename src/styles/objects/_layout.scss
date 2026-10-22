@@ -1,0 +1,48 @@
+@use '../settings/variables' as vars;
+@use '../tools/mixins' as tools;
+
+// Contenedor principal de página centrado vertical y horizontalmente
+.o-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: vars.$space-md;
+}
+
+// Contenedor con ancho máximo fluido
+.o-container {
+  width: 100%;
+  max-width: min(100% - calc(vars.$space-md * 2), 480px);
+  margin-inline: auto;
+}
+
+// Distribución vertical con espaciado constante
+.o-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: vars.$space-lg;
+
+  &--center {
+    align-items: center;
+    text-align: center;
+  }
+
+  &--tight {
+    gap: vars.$space-sm;
+  }
+}
+
+// Rejilla adaptable fluida
+.o-grid-fluid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: vars.$space-md;
+}
+
+// Clase utilitaria para ocultar visualmente y mantener accesibilidad
+.u-sr-only {
+  @include tools.sr-only;
+}
