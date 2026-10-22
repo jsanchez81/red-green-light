@@ -1,0 +1,70 @@
+@use 'styles/settings/colors' as colors;
+@use 'styles/settings/variables' as vars;
+@use 'styles/tools/mixins' as tools;
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-traffic-light {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__housing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: vars.$space-md;
+    padding: vars.$space-md vars.$space-md;
+    background: #0b0f19;
+    border: 3px solid #1e293b;
+    border-radius: 28px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5),
+                inset 0 2px 4px rgba(255, 255, 255, 0.05);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  &__light {
+    position: relative;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    border: 3px solid rgba(0, 0, 0, 0.4);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+
+    @include tools.motion-safe {
+      transition: background-color vars.$transition-base,
+                  box-shadow vars.$transition-base;
+    }
+
+    // Estados inactivos
+    &--red {
+      background-color: #3b0f0f;
+    }
+
+    &--green {
+      background-color: #062b14;
+    }
+
+    // Rojo activo
+    &--red#{&}--active {
+      background: radial-gradient(circle at 35% 35%, #ff6b6b 0%, #ef4444 60%, #b91c1c 100%);
+      border-color: #fca5a5;
+      box-shadow: 0 0 24px rgba(239, 68, 68, 0.8),
+                  inset 0 0 12px rgba(255, 255, 255, 0.5);
+    }
+
+    // Verde activo
+    &--green#{&}--active {
+      background: radial-gradient(circle at 35% 35%, #4ade80 0%, #22c55e 60%, #15803d 100%);
+      border-color: #86efac;
+      box-shadow: 0 0 24px rgba(34, 197, 94, 0.8),
+                  inset 0 0 12px rgba(255, 255, 255, 0.5);
+    }
+  }
+}

@@ -6,6 +6,18 @@
           Red &amp; Green
         </h1>
       </header>
+
+      <div class="c-home-card__icon-container">
+        <app-split-circle-icon
+          [size]="130"
+          accessibleTitle="Icono Red and Green"
+          accessibleDescription="Círculo dividido verticalmente en dos colores: verde a la izquierda y rojo a la derecha"
+        />
+      </div>
+
+      <div class="c-home-card__form-wrapper">
+        <app-player-form (playerSubmit)="handlePlayerSubmit($event)" />
+      </div>
     </section>
   </div>
 </main>

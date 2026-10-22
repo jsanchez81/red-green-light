@@ -1,0 +1,16 @@
+<div class="c-game-page">
+  <app-game-header
+    [playerName]="playerName()"
+    (logout)="handleLogout()"
+  />
+
+  <main class="c-game-page__content">
+    <app-game-play
+      [highScore]="highScore()"
+      [currentScore]="currentScore()"
+      [lightColor]="lightColor()"
+      (stepLeft)="handleStepLeft()"
+      (stepRight)="handleStepRight()"
+    />
+  </main>
+</div>

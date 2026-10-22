@@ -1,0 +1,37 @@
+@use 'styles/settings/colors' as colors;
+@use 'styles/settings/variables' as vars;
+@use 'styles/tools/mixins' as tools;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.c-game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: vars.$space-sm vars.$space-md;
+  background-color: var(--color-surface, #{colors.$color-surface});
+  border-bottom: 1px solid var(--color-border, #{colors.$color-border});
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: vars.$space-sm;
+  }
+
+  &__greeting {
+    font-size: vars.$font-size-base;
+    font-weight: 700;
+    color: var(--color-text-primary, #{colors.$color-text-primary});
+    letter-spacing: 0.02em;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+}
