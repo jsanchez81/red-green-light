@@ -1,0 +1,34 @@
+<form
+  class="c-player-form"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  novalidate
+  aria-labelledby="player-form-heading"
+>
+  <h2 id="player-form-heading" class="u-sr-only">Formulario de registro de jugador</h2>
+
+  <div class="c-player-form__group">
+    <app-ui-input
+      label="Crear nuevo jugador"
+      inputId="playerName"
+      [formControl]="nameControl"
+      placeholder="Ej: JohannSanchez"
+      hint="Mínimo 4 caracteres alfanuméricos (sin espacios ni símbolos especiales)."
+      [errorMessage]="errorMessage"
+      [isInvalid]="isInputInvalid"
+      [maxlength]="20"
+      autocomplete="off"
+    />
+  </div>
+
+  <div class="c-player-form__actions">
+    <app-ui-button
+      type="submit"
+      variant="primary"
+      [disabled]="isSubmitDisabled"
+      ariaLabel="Comenzar partida como nuevo jugador"
+    >
+      Jugar
+    </app-ui-button>
+  </div>
+</form>

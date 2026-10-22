@@ -1,0 +1,105 @@
+@use 'styles/settings/colors' as colors;
+@use 'styles/settings/variables' as vars;
+@use 'styles/tools/mixins' as tools;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.c-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  padding: vars.$space-sm vars.$space-lg;
+  font-family: inherit;
+  font-size: vars.$font-size-base;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  border-radius: vars.$radius-md;
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  position: relative;
+
+  @include tools.motion-safe {
+    transition: background-color vars.$transition-fast,
+                box-shadow vars.$transition-fast,
+                transform vars.$transition-fast,
+                opacity vars.$transition-fast;
+
+    &:active:not(:disabled) {
+      transform: translateY(1px);
+    }
+  }
+
+  @include tools.focus-ring(colors.$color-focus-ring);
+
+  // Variantes
+  &--primary {
+    background-color: var(--color-primary-green-light, #{colors.$color-primary-green-light});
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary-green, #{colors.$color-primary-green});
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--color-surface, #{colors.$color-surface});
+    color: var(--color-text-primary, #{colors.$color-text-primary});
+    border-color: var(--color-border, #{colors.$color-border});
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-surface-hover, #{colors.$color-surface-hover});
+    }
+  }
+
+  &--danger {
+    background-color: var(--color-primary-red, #{colors.$color-primary-red});
+    color: #ffffff;
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary-red-light, #{colors.$color-primary-red-light});
+    }
+  }
+
+  // Estado deshabilitado
+  &:disabled,
+  &[aria-disabled='true'] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+    pointer-events: none;
+  }
+
+  &__content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: vars.$space-sm;
+  }
+
+  &__icon {
+    display: inline-block;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+
+  &__label {
+    display: inline-block;
+  }
+}

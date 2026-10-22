@@ -1,0 +1,33 @@
+<button
+  [type]="type()"
+  [disabled]="disabled()"
+  [attr.aria-disabled]="disabled()"
+  [attr.aria-label]="ariaLabel() || label()"
+  [class]="'c-btn c-btn--' + variant()"
+  (click)="handleClick($event)"
+>
+  <span class="c-btn__content">
+    @if (icon() === 'paw' || icon() === 'dog-paw') {
+      <svg
+        class="c-btn__icon"
+        viewBox="0 0 24 24"
+        width="22"
+        height="22"
+        aria-hidden="true"
+        fill="currentColor"
+      >
+        <ellipse cx="6" cy="7.5" rx="2" ry="2.8" />
+        <ellipse cx="10.5" cy="5.2" rx="2" ry="2.8" />
+        <ellipse cx="15.2" cy="5.5" rx="2" ry="2.8" />
+        <ellipse cx="19.2" cy="8.2" rx="1.9" ry="2.6" />
+        <path
+          d="M7.8 14.2c-.8 2.2.6 4.8 4.2 4.8s5-2.6 4.2-4.8c-.8-2-2.4-2.7-4.2-2.7s-3.4.7-4.2 2.7z"
+        />
+      </svg>
+    }
+    @if (label()) {
+      <span class="c-btn__label">{{ label() }}</span>
+    }
+    <ng-content />
+  </span>
+</button>

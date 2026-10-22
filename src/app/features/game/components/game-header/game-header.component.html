@@ -1,0 +1,16 @@
+<header class="c-game-header">
+  <div class="c-game-header__left">
+    <app-split-circle-icon [size]="38" />
+    <span class="c-game-header__greeting">Hola: {{ playerName() }}</span>
+  </div>
+
+  <div class="c-game-header__right">
+    <app-user-icon (userClick)="openSettings()" />
+  </div>
+</header>
+
+<app-settings-modal
+  [isOpen]="isSettingsOpen()"
+  (closeModal)="closeSettings()"
+  (exitGame)="handleExit()"
+/>

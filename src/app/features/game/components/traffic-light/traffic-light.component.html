@@ -1,0 +1,26 @@
+<div
+  class="c-traffic-light"
+  role="status"
+  [attr.aria-label]="statusText()"
+  aria-live="polite"
+>
+  <div class="c-traffic-light__housing">
+    <!-- Luz roja -->
+    <div
+      class="c-traffic-light__light c-traffic-light__light--red"
+      [class.c-traffic-light__light--active]="isRedActive()"
+      [attr.aria-hidden]="!isRedActive()"
+    >
+      <span class="u-sr-only">Rojo</span>
+    </div>
+
+    <!-- Luz verde -->
+    <div
+      class="c-traffic-light__light c-traffic-light__light--green"
+      [class.c-traffic-light__light--active]="isGreenActive()"
+      [attr.aria-hidden]="!isGreenActive()"
+    >
+      <span class="u-sr-only">Verde</span>
+    </div>
+  </div>
+</div>

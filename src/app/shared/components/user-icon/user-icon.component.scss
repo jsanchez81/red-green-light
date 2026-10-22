@@ -1,0 +1,44 @@
+@use 'styles/settings/colors' as colors;
+@use 'styles/settings/variables' as vars;
+@use 'styles/tools/mixins' as tools;
+
+:host {
+  display: inline-block;
+}
+
+.c-user-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background-color: var(--color-surface, #{colors.$color-surface});
+  border: 2px solid var(--color-border, #{colors.$color-border});
+  border-radius: vars.$radius-full;
+  color: var(--color-text-primary, #{colors.$color-text-primary});
+  cursor: pointer;
+
+  @include tools.motion-safe {
+    transition: background-color vars.$transition-fast,
+                border-color vars.$transition-fast,
+                transform vars.$transition-fast;
+
+    &:hover {
+      background-color: var(--color-surface-hover, #{colors.$color-surface-hover});
+      border-color: #38bdf8;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  @include tools.focus-ring(colors.$color-focus-ring);
+
+  &__icon {
+    display: block;
+    color: currentColor;
+  }
+}
