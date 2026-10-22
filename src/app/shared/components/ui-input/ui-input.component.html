@@ -1,0 +1,49 @@
+<div class="c-ui-input">
+  <label [for]="inputId()" class="c-ui-input__label">
+    {{ label() }}
+  </label>
+
+  <div class="c-ui-input__wrapper">
+    <input
+      [id]="inputId()"
+      [name]="inputId()"
+      [type]="type()"
+      [value]="value()"
+      [disabled]="disabled()"
+      [placeholder]="placeholder()"
+      [attr.maxlength]="maxlength()"
+      [attr.autocomplete]="autocomplete()"
+      class="c-ui-input__field"
+      [class.c-ui-input__field--invalid]="isInvalid()"
+      (input)="handleInput($event)"
+      (blur)="handleBlur()"
+      [attr.aria-invalid]="isInvalid()"
+      [attr.aria-describedby]="
+        errorMessage()
+          ? inputId() + '-hint ' + inputId() + '-error'
+          : hint()
+            ? inputId() + '-hint'
+            : null
+      "
+      spellcheck="false"
+    />
+  </div>
+
+  @if (hint()) {
+    <p [id]="inputId() + '-hint'" class="c-ui-input__hint">
+      {{ hint() }}
+    </p>
+  }
+
+  @if (errorMessage()) {
+    <p
+      [id]="inputId() + '-error'"
+      class="c-ui-input__error"
+      role="alert"
+      aria-live="polite"
+    >
+      <span class="c-ui-input__error-icon" aria-hidden="true">⚠️</span>
+      <span>{{ errorMessage() }}</span>
+    </p>
+  }
+</div>

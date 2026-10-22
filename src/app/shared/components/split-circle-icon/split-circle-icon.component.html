@@ -1,0 +1,50 @@
+<div class="c-split-circle-wrapper" [style.width.px]="size()" [style.height.px]="size()">
+  <svg
+    class="c-split-circle"
+    viewBox="0 0 100 100"
+    role="img"
+    aria-labelledby="split-circle-title split-circle-desc"
+    focusable="false"
+  >
+    <title id="split-circle-title">{{ accessibleTitle() }}</title>
+    <desc id="split-circle-desc">{{ accessibleDescription() }}</desc>
+
+    <defs>
+      <!-- Sombra suave para mejorar el contraste visual -->
+      <filter id="subtle-glow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.3" flood-color="#000000" />
+      </filter>
+    </defs>
+
+    <g filter="url(#subtle-glow)">
+      <!-- Semicírculo izquierdo: Verde -->
+      <path
+        class="c-split-circle__half c-split-circle__half--left"
+        d="M 50,2 A 48,48 0 0,0 50,98 Z"
+      />
+
+      <!-- Semicírculo derecho: Rojo -->
+      <path
+        class="c-split-circle__half c-split-circle__half--right"
+        d="M 50,2 A 48,48 0 0,1 50,98 Z"
+      />
+
+      <!-- Línea divisoria central -->
+      <line
+        class="c-split-circle__divider"
+        x1="50"
+        y1="2"
+        x2="50"
+        y2="98"
+      />
+
+      <!-- Borde exterior de contraste -->
+      <circle
+        class="c-split-circle__outline"
+        cx="50"
+        cy="50"
+        r="48"
+      />
+    </g>
+  </svg>
+</div>

@@ -1,0 +1,95 @@
+@use 'styles/settings/colors' as colors;
+@use 'styles/settings/variables' as vars;
+@use 'styles/tools/mixins' as tools;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.c-ui-input {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$space-xs;
+  width: 100%;
+
+  &__label {
+    font-size: vars.$font-size-base;
+    font-weight: 600;
+    color: var(--color-text-primary, #{colors.$color-text-primary});
+    cursor: pointer;
+    user-select: none;
+    line-height: 1.4;
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  &__field {
+    width: 100%;
+    min-height: 48px; // Altura mínima táctil accesible
+    padding: vars.$space-sm vars.$space-md;
+    font-family: inherit;
+    font-size: vars.$font-size-base;
+    color: var(--color-text-primary, #{colors.$color-text-primary});
+    background-color: var(--color-surface, #{colors.$color-surface});
+    border: 1px solid var(--color-border, #{colors.$color-border});
+    border-radius: vars.$radius-md;
+    outline: none;
+
+    @include tools.motion-safe {
+      transition: border-color vars.$transition-fast;
+    }
+
+    &::placeholder {
+      color: colors.$color-text-muted;
+      opacity: 0.8;
+    }
+
+    // Foco por teclado
+    &:focus-visible {
+      border-color: var(--color-border-focus, #{colors.$color-border-focus});
+      outline: 2px solid var(--color-border-focus, #{colors.$color-border-focus});
+      outline-offset: 1px;
+    }
+
+    // Estado inválido
+    &--invalid {
+      border-color: #ef4444;
+
+      &:focus-visible {
+        border-color: #ef4444;
+        outline: 2px solid #ef4444;
+        outline-offset: 1px;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  &__hint {
+    font-size: vars.$font-size-sm;
+    color: var(--color-text-secondary, #{colors.$color-text-secondary});
+    line-height: 1.4;
+  }
+
+  &__error {
+    display: flex;
+    align-items: center;
+    gap: vars.$space-xs;
+    font-size: vars.$font-size-sm;
+    font-weight: 500;
+    color: #ef4444;
+    line-height: 1.4;
+  }
+
+  &__error-icon {
+    font-size: 0.875rem;
+    flex-shrink: 0;
+  }
+}
