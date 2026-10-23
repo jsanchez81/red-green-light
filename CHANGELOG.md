@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/jsanchez81/red-green-light/compare/v1.1.0...v1.2.0) (2026-10-23)
+
+
+### Features
+
+* **pwa:** add progressive web app support with service worker and manifest ([eb35a71](https://github.com/jsanchez81/red-green-light/commit/eb35a7105fe86510066999ed3a887180d9d7cefd))
+
 ## 1.1.0 (2026-10-22)
 
 
